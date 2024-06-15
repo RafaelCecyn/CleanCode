@@ -16,26 +16,26 @@ function fetchUser() {
     }
   }
 }
-
+// isFunctionNotSuccessful
 export function UserProfile() {
-  const [shouldNotRenderUserName, setShouldNotRenderUserName] = useState(false)
+  const [isFunctionNotSuccessful, setIsFunctionNotSuccessful] = useState(false)
   const [userData, setUserData] = useState<User>()
 
   useEffect(() => {
     function loadUser() {
-      setShouldNotRenderUserName(true)
+      setIsFunctionNotSuccessful(true)
 
       const fetchUserResponse = fetchUser()
 
       setUserData(fetchUserResponse.data.user)
       
-      setShouldNotRenderUserName(false)
+      setIsFunctionNotSuccessful(false)
     }
 
     loadUser()
   })
 
-  if (shouldNotRenderUserName) {
+  if (isFunctionNotSuccessful) {
     return <p>Loading...</p>
   }
 
